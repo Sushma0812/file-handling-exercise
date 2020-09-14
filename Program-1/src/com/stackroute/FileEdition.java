@@ -8,18 +8,13 @@ public class FileEdition {
         //append the string to a text file
         try {
             File fileName = new File("/home/ubuntu/Desktop/java/File-Handling/Program-1/text.txt" + stringOne);
-            byte[] stringTwoBytes = stringTwo.getBytes();
             FileOutputStream fileOutputStream = new FileOutputStream(stringOne, true);
             FileInputStream fileInputStream = new FileInputStream(stringOne);
             if (!stringTwo.isEmpty() && fileName.exists() && !stringOne.isEmpty() && stringOne != " ") {
-                fileOutputStream.write(stringTwoBytes);
-                int i;
-                while ((i = fileInputStream.read()) != -1) {
-                    System.out.print((char) i);
-                }
+                fileOutputStream.write(stringTwo.getBytes());
             }
             //if file not found displays file not exist
-            else {
+            else if(!fileName.exists()) {
                 result = "File does not exist";
             }
         } catch (Exception exception) {

@@ -1,24 +1,27 @@
 package com.stackroute;
+
 import java.io.*;
+
 public class FileMigration {
-    public static String fileContentDuplicator(String stringOne, String stringTwo) throws IOException {
-        String result =" ";
+    public static String fileContentDuplicator(String stringOne, String stringTwo) {
+        String result = " ";
         //migrates content from one file to another file
         try {
-            File fileNameOne = new File("/home/ubuntu/Desktop/file handling/text.txt/" + stringOne);
-            File fileNameTwo = new File("/home/ubuntu/Desktop/file handling/textBackup.txt/" + stringTwo);
+            File fileNameOne = new File("text.txt");
+            File fileNameTwo = new File("textBackup.txt");
             FileInputStream fileInputStream = new FileInputStream(fileNameOne);
             BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-            FileOutputStream fileOutput = new FileOutputStream(fileNameTwo);
-            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutput);
-            int i;
+            FileOutputStream fileOutputStream = new FileOutputStream(fileNameTwo);
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
             if (fileNameOne.length() != 0) {
-                while (( i = fileInputStream.read()) != -1)
-                    fileOutput.write(i);
+                for (int i = 0; i < fileNameOne.length(); i++) {
+                    char character = (char) bufferedInputStream.read();
+                    bufferedOutputStream.write(character);
+                }
             }
             //displays given file name is empty or null or contains blank space
             else {
-                result ="Given filename to read or write is empty,null or blank space";
+                result = "Given filename to read or write is empty,null or blank space";
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
