@@ -7,13 +7,13 @@ public class FileMigration {
         try {
             File fileNameOne = new File("/home/ubuntu/Desktop/file handling/text.txt/" + stringOne);
             File fileNameTwo = new File("/home/ubuntu/Desktop/file handling/textBackup.txt/" + stringTwo);
+            FileInputStream fileInputStream = new FileInputStream(fileNameOne);
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+            FileOutputStream fileOutput = new FileOutputStream(fileNameTwo);
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutput);
+            int i;
             if (fileNameOne.length() != 0) {
-                FileInputStream fileInputStream = new FileInputStream(fileNameOne);
-                BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-                FileOutputStream fileOutput = new FileOutputStream(fileNameTwo);
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutput);
-                int i;
-                while ((i = fileInputStream.read()) != -1)
+                while (( i = fileInputStream.read()) != -1)
                     fileOutput.write(i);
             }
             //displays given file name is empty or null or contains blank space
@@ -35,3 +35,4 @@ public class FileMigration {
         System.out.println(result);
     }
 }
+

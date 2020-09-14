@@ -8,11 +8,11 @@ public class FileEdition {
         //append the string to a text file
         try {
             File fileName = new File("/home/ubuntu/Desktop/java/File-Handling/Program-1/text.txt" + stringOne);
-            if (stringTwo.isEmpty() == false && fileName.exists() && !stringOne.isEmpty() && stringOne != " ") {
-                FileOutputStream fileOutputStream = new FileOutputStream(stringOne, true);
-                byte[] stringTwoBytes = stringTwo.getBytes();
+            byte[] stringTwoBytes = stringTwo.getBytes();
+            FileOutputStream fileOutputStream = new FileOutputStream(stringOne, true);
+            FileInputStream fileInputStream = new FileInputStream(stringOne);
+            if (!stringTwo.isEmpty() && fileName.exists() && !stringOne.isEmpty() && stringOne != " ") {
                 fileOutputStream.write(stringTwoBytes);
-                FileInputStream fileInputStream = new FileInputStream(stringOne);
                 int i;
                 while ((i = fileInputStream.read()) != -1) {
                     System.out.print((char) i);
@@ -27,7 +27,6 @@ public class FileEdition {
         }
         return result;
     }
-
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter a file name");

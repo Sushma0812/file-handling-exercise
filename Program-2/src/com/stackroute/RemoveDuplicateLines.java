@@ -8,12 +8,11 @@ public class RemoveDuplicateLines {
     public static void removeDuplicateLines() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("input.txt");
         BufferedReader bufferedReader = new BufferedReader(new FileReader("input.txt"));
-        Set<String> stringHashSet = new HashSet<String>(10000);
+        Set<String> stringHashSet = new TreeSet<String>;
         String string;
         while ((string = bufferedReader.readLine()) != null) {
             stringHashSet.add(string);
         }
-        bufferedReader.close();
         FileOutputStream fileOutputStream = new FileOutputStream("output.txt");
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("output.txt"));
         for (String distinctStrings : stringHashSet) {
