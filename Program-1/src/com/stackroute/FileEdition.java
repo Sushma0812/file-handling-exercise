@@ -3,7 +3,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.*;
 public class FileEdition {
-    public static String fileEditor(String stringOne, String stringTwo) throws IOException {
+    public static String fileEditor(String stringOne, String stringTwo) {
         String result = " ";
         //append the string to a text file
         try {
@@ -27,6 +27,7 @@ public class FileEdition {
         }
         return result;
     }
+
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter a file name");
